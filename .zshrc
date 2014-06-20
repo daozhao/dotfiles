@@ -77,6 +77,9 @@ export LANG=en_US.UTF-8
 export GOROOT=/usr/local/go
 #export GOROOT=$HOME/Documents/SourceCode/goRoot
 export GOPATH=$HOME/Documents/SourceCode/goPath
+export PATH=$PATH:$GOPATH/bin
+launchctl setenv GOROOT $GOROOT
+launchctl setenv GOPATH $GOPATH
 
 PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}>% %{$reset_color%}'
 
