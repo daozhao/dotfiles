@@ -50,6 +50,8 @@ filetype off                  " required!
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+cmap w!! w !sudo tee >/dev/null %
+
 " let Vundle manage Vundle
 " required! 
 Bundle 'gmarik/vundle'
@@ -110,6 +112,7 @@ Bundle 'Blackrush/vim-gocode'
 Bundle 'majutsushi/tagbar'
 "go 语言存盘自动格式化。
 autocmd BufWritePre *.go :Fmt
+Bundle 'fatih/vim-go'
 
 "Bundle 'Superbil/llvm.vim'
 "augroup filetype
@@ -149,6 +152,7 @@ let g:DoxygenToolkit_authorName="Mathias Lorente"
 let g:DoxygenToolkit_licenseTag="My own license"  
 
 Bundle 'airblade/vim-gitgutter'
+
 
 "状态栏增强展示
 Bundle 'bling/vim-airline'
