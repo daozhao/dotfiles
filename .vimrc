@@ -35,7 +35,7 @@ set cindent              "使用C语言的缩进方式
 set autoindent             "自动缩进
 set showmode             "显示当前工作模式
 set ruler                "在vim窗口右下角显示光标位置
-set mouse=a                 "启动鼠标功能
+"set mouse=a                 "启动鼠标功能
 set number
 
 "--命令行设置--
@@ -140,8 +140,31 @@ let g:ctrlp_custom_ignore = {
 
 "Bundle 'Lokaltog/vim-powerline'
 "let g:Powerline_symbols = 'fancy'
-"
-"
+
+set rtp+=/Library/Python/2.7/site-packages/powerline/bindings/vim
+" These lines setup the environment to show graphics and colors correctly.
+set nocompatible
+set t_Co=256
+
+let g:minBufExplForceSyntaxEnable = 1
+python from powerline.vim import setup as powerline_setup
+python powerline_setup()
+python del powerline_setup
+
+if ! has('gui_running')
+    set ttimeoutlen=10
+    augroup FastEscape
+        autocmd!
+        au InsertEnter * set timeoutlen=0
+        au InsertLeave * set timeoutlen=1000
+    augroup END
+endif
+
+set laststatus=2 " Always display the statusline in all windows
+set guifont=Inconsolata\ for\ Powerline:h14
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+
+
 Bundle 'DoxygenToolkit.vim'
 let g:DoxygenToolkit_briefTag_pre="@Synopsis  " 
 let g:DoxygenToolkit_paramTag_pre="@Param " 
@@ -155,41 +178,41 @@ Bundle 'airblade/vim-gitgutter'
 
 
 "状态栏增强展示
-Bundle 'bling/vim-airline'
-" --- vim-airline
-set ttimeoutlen=50
-let g:airline_left_sep = ''
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_sep = ''
-let g:airline_linecolumn_prefix = ''
-let g:airline_linecolumn_prefix = ''
-let g:airline_linecolumn_prefix = ''
-let g:airline#extensions#whitespace#enabled = 0
-let g:airline#extensions#branch#enabled = 1
-let g:airline#extensions#syntastic#enabled = 0
-let g:airline#extensions#tagbar#enabled = 1
-let g:airline#extensions#csv#enabled = 0
-let g:airline#extensions#hunks#enabled = 0
-let g:airline#extensions#virtualenv#enabled = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#left_sep = ' '
-let g:airline#extensions#tabline#left_alt_sep = '|'
-let g:airline_theme_patch_func = 'AirlineThemePatch'
-
-function! AirlineInit()
-    let g:airline_section_y = airline#section#create_right(['%v', '%l'])
-    let g:airline_section_z = airline#section#create_right(['%P', '%L'])
-endfunction
-autocmd VimEnter * call AirlineInit()
-
-function! AirlineThemePatch(palette)
-    if g:airline_theme == "wombat"
-        for colors in values(a:palette.inactive)
-            let colors[3] = 235
-        endfor
-    endif
-endfunction
+"Bundle 'bling/vim-airline'
+"" --- vim-airline
+"set ttimeoutlen=50
+"let g:airline_left_sep = ''
+"let g:airline_left_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_right_sep = ''
+"let g:airline_linecolumn_prefix = ''
+"let g:airline_linecolumn_prefix = ''
+"let g:airline_linecolumn_prefix = ''
+"let g:airline#extensions#whitespace#enabled = 0
+"let g:airline#extensions#branch#enabled = 1
+"let g:airline#extensions#syntastic#enabled = 0
+"let g:airline#extensions#tagbar#enabled = 1
+"let g:airline#extensions#csv#enabled = 0
+"let g:airline#extensions#hunks#enabled = 0
+"let g:airline#extensions#virtualenv#enabled = 1
+"let g:airline#extensions#tabline#enabled = 1
+"let g:airline#extensions#tabline#left_sep = ' '
+"let g:airline#extensions#tabline#left_alt_sep = '|'
+"let g:airline_theme_patch_func = 'AirlineThemePatch'
+"
+"function! AirlineInit()
+"    let g:airline_section_y = airline#section#create_right(['%v', '%l'])
+"    let g:airline_section_z = airline#section#create_right(['%P', '%L'])
+"endfunction
+"autocmd VimEnter * call AirlineInit()
+"
+"function! AirlineThemePatch(palette)
+"    if g:airline_theme == "wombat"
+"        for colors in values(a:palette.inactive)
+"            let colors[3] = 235
+"        endfor
+"    endif
+"endfunction
 
 
 "Bundle 'minibufexpl.vim'

@@ -45,7 +45,7 @@ ZSH_THEME="robbyrussell"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git)
+plugins=(git osx autojump golang)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -77,10 +77,31 @@ export LANG=en_US.UTF-8
 export GOROOT=/usr/local/go
 #export GOROOT=$HOME/Documents/SourceCode/goRoot
 export GOPATH=$HOME/Documents/SourceCode/goPath
+export GOPATH=$GOPATH:$HOME/Documents/DonViewCompany/videowebsite
+
 export PATH=$PATH:$GOPATH/bin
+#export PATH=$PATH:~/Documents/SourceCode/android-ndk-r10d
+
+#export ANDROID_API=android-19
+export ANDROID_NDK_ROOT=~/Documents/SourceCode/android-ndk-r10d
+export PATH=$PATH:$ANDROID_NDK_ROOT
+
+#export ANDROID_TOOLCHAIN=/Users/daozhao/Documents/SourceCode/android-ndk-r10d/toolchains/arm-linux-androideabi-4.8/prebuilt/darwin-x86_64/bin
+#export ANDROID_SYSROOT=/Users/daozhao/Documents/SourceCode/android-ndk-r10d/platforms/$ANDROID_API/arch-arm
+#export ANDROID_NDK_SYSROOT=/Users/daozhao/Documents/SourceCode/android-ndk-r10d/platforms/$ANDROID_API//arch-arm
+#export ANDROID_DEV=/Users/daozhao/Documents/SourceCode/android-ndk-r10d/platforms/$ANDROID_API/arch-arm/usr
+
+export PATH=$PATH:$ANDROID_NDK_ROOT/N19-gcc48/bin
+#export PATH=$PATH:$ANDROID_NDK_ROOT/17-gcc48/bin
+export PATH=$PATH:/Users/daozhao/Documents/SourceCode/Android-SDK/platform-tools 
+#export PATH=/Users/daozhao/Documents/SourceCode/android19-nginx/N19-gcc48/bin:/Users/daozhao/Documents/SourceCode/android19-nginx/N19-gcc48/arm-linux-androideabi/bin:$PATH
+#export PATH=/Users/daozhao/Documents/SourceCode/android19-nginx/N19-gcc48/bin:$PATH
+
+
 launchctl setenv GOROOT $GOROOT
 launchctl setenv GOPATH $GOPATH
 
-PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}>% %{$reset_color%}'
 
+. /Library/Python/2.7/site-packages/powerline/bindings/zsh/powerline.zsh
+#PROMPT='${ret_status}%{$fg_bold[green]%}%p %{$fg[cyan]%}%c %{$fg_bold[blue]%}$(git_prompt_info)%{$fg_bold[blue]%}>% %{$reset_color%}'
 source $HOME/.bash_profile
